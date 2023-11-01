@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using Primeiro.Entities.Enums;
 
 namespace Primeiro.Entities
 {
@@ -7,11 +8,10 @@ namespace Primeiro.Entities
     {
         public DateTime Moment { get; set; }
         public OrderStatus Status { get; set; }
-        public Product Product { get; set; }
         public Client Client { get; set; }
         public List<OrderItem> OrderProduct { get; set; } = new List<OrderItem>();
         
-        public Order(DateTime moment ,OrderStatus status ,Product product, Client client)
+        public Order(DateTime moment ,OrderStatus status , Client client)
         {
            Moment = moment; 
            Status = status; 
@@ -24,7 +24,7 @@ namespace Primeiro.Entities
            OrderProduct.Add(product);
         }
 
-        public void RemoveProduct(OrderProduct product)
+        public void RemoveProduct(OrderItem product)
         {
            OrderProduct.Remove(product);
         }
@@ -37,18 +37,7 @@ namespace Primeiro.Entities
             {
                 sum += product.subTotal();
             }
-
            return sum;  
         } 
-    }
+     }
 }
-
-
-
-
-
-
-
-// product { infor, infor  } = pedidto do produttp {  infor, infor . meth somar o valor ( infor * infor  ) }
-
-// order ( soma de todos os produtos )  
