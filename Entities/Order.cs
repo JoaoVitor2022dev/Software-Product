@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Collections.Generic;
 using Primeiro.Entities.Enums;
 
 namespace Primeiro.Entities
@@ -9,35 +10,40 @@ namespace Primeiro.Entities
         public DateTime Moment { get; set; }
         public OrderStatus Status { get; set; }
         public Client Client { get; set; }
-        public List<OrderItem> OrderProduct { get; set; } = new List<OrderItem>();
+        public List<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
         
-        public Order(DateTime moment ,OrderStatus status , Client client)
+        public Order(DateTime moment ,OrderStatus status , Client client )
         {
            Moment = moment; 
            Status = status; 
-           Product = product; 
            Client = client;
         }
 
-        public void AddProduct(OrderItem product)
+        public void AddItem(OrderItem item)
         {
-           OrderProduct.Add(product);
+           OrderItem.Add(item);
         }
 
-        public void RemoveProduct(OrderItem product)
+        public void RemoveItem(OrderItem item)
         {
-           OrderProduct.Remove(product);
+           OrderItem.Remove(item);
         }
 
         public double Total()
         {
            double sum = 0.0;
              
-            foreach (OrderItem product in OrderProduct)
+            foreach (OrderItem prop in OrderItem)
             {
-                sum += product.subTotal();
+                sum += prop.subTotal();
             }
            return sum;  
         } 
+
+        public override string ToString()
+        {
+           StringBuilder bs = new StringBuilder();
+           sb.Append();
+        }  
      }
 }
